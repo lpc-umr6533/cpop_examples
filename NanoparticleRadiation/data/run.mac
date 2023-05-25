@@ -1,0 +1,139 @@
+#########################################################
+#Copyright (C): Henri Payno, Axel Delsol, 				#
+#Laboratoire de Physique de Clermont UMR 6533 CNRS-UCA	#
+#														#
+#This software is distributed under the terms			#
+#of the GNU Lesser General  Public Licence (LGPL)		#
+#See LICENSE.md for further details						#
+#########################################################
+########################################################################
+# Define detector parameter
+# In this example, you only need to set the size of the box
+
+/detector/size 800 um
+
+########################################################################
+# Define the physics process you want to simulate
+/run/particle/verbose 0
+/run/verbose 0
+# set the maximum step allowed
+/cpop/physics/stepMax 0.0001 mm
+
+# set the physics list you want to use.
+# candidates : emstandard emstandard_opt1 emstandard_opt2 emstandard_opt3 emstandard_opt4 emlivermore empenelope emDNAphysics
+/cpop/physics/physicsList emstandard_opt4
+
+
+# Those commands are defined in G4EmParametersMessenger.cc
+/process/eLoss/minKinEnergy 100 eV
+/process/eLoss/maxKinEnergy 1 GeV
+/process/em/auger true
+
+# Those commands are defined in G4ProductionCutsTableMessenger.cc
+#/cuts/setLowEdge 0.0001 mm
+
+
+########################################################################
+# Define CPOP parameters
+
+# allow cpop to print cpop parameters at the beginning of the simulation
+/cpop/population/verbose 1
+
+# set the population file (relative path from the current directory)
+/cpop/population/input data/population.xml
+
+# set representation parameters
+/cpop/population/numberFacet 100
+/cpop/population/deltaRef !
+
+# define necrosis, intermediary and external regions
+# Necrosis region     : from 0                   to 0.25*spheroidRadius
+# Intermediary region : from 0.25*spheroidRadius to 0.75*spheroidRadius
+# External region     : from 0.75*spheroidRadius to spheroidRadius
+/cpop/population/internalRatio 0.25
+/cpop/population/intermediaryRatio 0.75
+
+# set sampling cell ie number of cell per region to observe
+/cpop/population/sampling 10
+
+# Get info at the stepping level
+/cpop/population/stepInfo 1
+# Get info at the event level
+/cpop/population/eventInfo 0
+##### For now, only one option can be chosen ####
+
+# Initialize cpop
+/cpop/population/init
+
+
+########################################################################
+# Initialiaze and geant4
+/run/initialize
+
+########################################################################
+# Define sources
+
+# add a gamma source using a user defined spectrum
+#/cpop/source/addUniform gamma
+#/cpop/source/gamma/particle gamma
+#/cpop/source/gamma/spectrum data/phspectrum_spheroid.txt
+
+# number of particles to be generated from this source
+#/cpop/source/gamma/totalParticle 10000
+
+# Does it work for 'genericIoc' (all particles)? No.
+# Does it work for any spectrum? Yes.
+# rename .spec → .txt
+# Rename Nanoparticle → ?
+# addHomogeneous → addUniform?
+# addNanoparticle → addMulti?
+
+# add a gadolinium source
+/cpop/source/addDistribution gadolinium
+
+# set the secondaries particle to generate from a nanoparticle
+/cpop/source/gadolinium/particle e-
+/cpop/source/gadolinium/spectrum data/eSpectrumGBN_550um.txt
+
+# set the number of sources in the spheroid
+/cpop/source/gadolinium/totalSource 30
+
+# set the number of particles emitted from one source
+/cpop/source/gadolinium/particlesPerSource 1
+
+# set the source distribution in each region
+# requirement : the sum of your value must be equal to totalSource
+# region order : necrosis intermediary external
+/cpop/source/gadolinium/distributionInRegion  10 10 10
+
+# set the sources distribution in a cell containing a source
+# organelle order : CellMembrane Nucleus NucleusMembrane Cytoplasm
+# Put a float proportion between 0 and 1 
+/cpop/source/radionuclide/distributionInCell 1 0 0 0
+
+# set the maximum number of sources per cell, in each region.
+# region order : necrosis intermediary external
+/cpop/source/radionuclide/maxSourcesPerCell 10000 10000 10000
+
+# Activate diffusion of radionuclide's daughter (only for At-211)
+/cpop/source/daughterDiffusion no
+
+
+# initialize the sources
+/cpop/source/init
+
+########################################################################
+# Set the output file
+
+# defined in G4FileMessenger.cc
+/analysis/setFileName output.root
+
+########################################################################
+# Start the simulation
+
+# defined in G4RunMessenger.cc
+/run/printProgress 1000
+
+# requirement : the value should be equal to 
+# totalParticle + totalSource * particlesPerSource
+/run/beamOn 30
