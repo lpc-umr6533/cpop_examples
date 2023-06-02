@@ -1,5 +1,5 @@
 /*----------------------
-Copyright (C): Henri Payno, Axel Delsol, 
+Copyright (C): Henri Payno, Axel Delsol,
 Laboratoire de Physique de Clermont UMR 6533 CNRS-UCA
 
 This software is distributed under the terms
@@ -15,6 +15,8 @@ See LICENSE.md for further details
 
 class DetectorConstruction;
 
+/// Detector construction messenger class to interact with the geometry
+/// information via a .mac file
 
 class DetectorConstructionMessenger : public G4UImessenger
 {
