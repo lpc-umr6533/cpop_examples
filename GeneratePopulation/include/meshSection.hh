@@ -67,6 +67,10 @@
  *
  */
 
+ ///MeshSection
+ ///
+ ///It contains the mesh properties for the cell population.
+
 namespace B6 {
 
 template <typename T>

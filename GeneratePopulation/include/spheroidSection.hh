@@ -67,6 +67,10 @@
  *
  */
 
+ ///SpheroidSection class
+ ///
+ ///It contains the spheroid properties
+ 
 namespace B6 {
 
 template <typename T>

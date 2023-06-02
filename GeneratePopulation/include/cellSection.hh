@@ -71,6 +71,10 @@
  *
  */
 
+ ///CellSection classzz_1_1cfg_1_1_value
+ ///
+ ///It contains the geometrical properties of a cell.
+
 namespace B6 {
 
 template <typename T>

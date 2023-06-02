@@ -68,6 +68,10 @@
  *
  */
 
+ ///UnitSection class
+ ///
+ ///It contains the metric system information
+
 namespace B6 {
 
 template <typename T>
