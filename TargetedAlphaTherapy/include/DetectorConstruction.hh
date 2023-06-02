@@ -22,6 +22,8 @@ namespace cpop {
 class DetectorConstructionMessenger;
 class Population;
 
+/// Detector construction class to define materials and geometry.
+
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
 public:

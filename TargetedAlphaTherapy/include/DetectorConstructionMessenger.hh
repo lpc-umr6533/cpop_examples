@@ -17,6 +17,8 @@ namespace cpop {
 
 class DetectorConstruction;
 
+/// Detector construction messenger class to interact with the geometry
+/// information via a .mac file
 
 class DetectorConstructionMessenger : public G4UImessenger
 {

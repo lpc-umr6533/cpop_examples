@@ -24,7 +24,7 @@
 // ********************************************************************
 //
 // This example is provided by the Geant4-DNA collaboration
-// Any report or published results obtained using the Geant4-DNA software 
+// Any report or published results obtained using the Geant4-DNA software
 // shall cite the following Geant4-DNA collaboration publication:
 // Med. Phys. 37 (2010) 4692-4708
 // The Geant4-DNA web site is available at http://geant4-dna.org
@@ -39,16 +39,6 @@
 //
 //----------------------------------------------------------------------------
 //
-// Class description:
-//
-// G4ElectronCapture allows to remove unwanted e- from simulation in 
-// order to improve CPU performance. There are two parameters:
-//                 
-// 1) low energy threshold for e- kinetic energy (default 0)
-// 2) the name of G4Region where process is active
-// 
-//
-// If an electron track is killed then energy deposition is added to the step 
 //
 /// \file G4ElectronCapture.hh
 /// \brief Definition of the G4ElectronCapture class
@@ -61,6 +51,17 @@
 #include "G4ParticleChangeForGamma.hh"
 
 class G4Region;
+
+/// G4ElectronCapture class
+///
+/// G4ElectronCapture allows to remove unwanted e- from simulation in
+/// order to improve CPU performance. There are two parameters:
+///
+/// 1) low energy threshold for e- kinetic energy (default 0)
+/// 2) the name of G4Region where process is active
+///
+///
+/// If an electron track is killed then energy deposition is added to the step
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -101,4 +102,3 @@ private:
 };
 
 #endif
-
