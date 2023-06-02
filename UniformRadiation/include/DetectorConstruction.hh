@@ -1,5 +1,5 @@
 /*----------------------
-Copyright (C): Henri Payno, Axel Delsol, 
+Copyright (C): Henri Payno, Axel Delsol,
 Laboratoire de Physique de Clermont UMR 6533 CNRS-UCA
 
 This software is distributed under the terms
@@ -13,6 +13,8 @@ See LICENSE.md for further details
 #include "G4VPhysicalVolume.hh"
 
 class DetectorConstructionMessenger;
+
+/// Detector construction class to define materials and geometry.
 
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
