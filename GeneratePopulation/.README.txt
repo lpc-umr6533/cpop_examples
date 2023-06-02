@@ -1,0 +1,34 @@
+
+///\file "GeneratePopulation/.README.txt"
+///\brief Example GeneratePopulation README page
+
+/*! \page GeneratePopulation Example %GeneratePopulation
+
+ This example shows how to use a configuration file to generate a population of cells.
+ The population is generated between two spheres and can be compacted or spaced to model
+ real situations.
+
+\section GeneratePopulation USAGE
+
+ The executable has 2 options:
+ - `-f filename`: path to the configuration file;
+ - `–vis`: generate a `.off` file to visualize your population with geomview (optional).
+
+ Example:
+ ```bash
+ ./generatePopulation -f data/exampleConfig.cfg --vis
+ geomview data/exampleConfig.cfg.off &
+ ```
+
+ In the data directory, you will find `exampleConfig.xml` which can be used to simulate
+ radiation exposure in Geant4.
+ Also, you will find 'exampleConfig.cfg' which contains a set of parameters that can be
+ used and/or modified to generate a cell population
+ 
+ \section GeneratePopulation PARAMETERS
+ 
+ In the GeneratePopulation directory, you will find 'configParameters.odt' which details
+ all the different parameters that can be modified for the cell population generation.
+   
+ They are divided in several categories: cell, spheroid, mesh, force and simulation
+ properties.
