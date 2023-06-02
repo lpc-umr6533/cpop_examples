@@ -70,7 +70,7 @@
 
  ///UnitSection class
  ///
- ///It contains the metric system information
+ ///It contains the metric system information.
 
 namespace B6 {
 
