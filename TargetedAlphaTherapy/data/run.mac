@@ -25,7 +25,9 @@
 /cpop/physics/stepMax 0.0001 mm
 
 # set the physics list you want to use.
-# candidates : emstandard emstandard_opt1 emstandard_opt2 emstandard_opt3 emstandard_opt4 emlivermore empenelope emDNAphysics emDNAphysics_opt2
+# candidates : emstandard emstandard_opt1 emstandard_opt2 emstandard_opt3
+emstandard_opt4 emlivermore empenelope emDNAphysics emDNAphysics_opt2
+emDNAphysics_opt4 emDNAphysics_opt6
 /cpop/physics/physicsList emstandard_opt4
 #/cpop/physics/physicsList emDNAphysics_opt2
 
@@ -88,14 +90,14 @@
 /cpop/source/addDistribution radionuclide
 
 # set the primary particles to send from a source
-#/cpop/source/radionuclide/particle alpha
+/cpop/source/radionuclide/particle alpha
 
 /cpop/source/radionuclide/ion 3 7
 
-#/cpop/source/radionuclide/spectrum data/At211.txt
+/cpop/source/radionuclide/spectrum data/At211.txt
 #/cpop/source/radionuclide/spectrum data/Bi213.txt
 #/cpop/source/radionuclide/spectrum data/Po210.txt
-/cpop/source/radionuclide/spectrum data/HeliumBNCT.txt
+#/cpop/source/radionuclide/spectrum data/HeliumBNCT.txt
 
 # set the number of sources in the spheroid
 /cpop/source/radionuclide/totalSource 200
