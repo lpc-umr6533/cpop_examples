@@ -10,6 +10,7 @@
  This example presents the irradiation of a spheroid by a targeted alpha therapy
  treatment. Alpha particles are emitted in cells and different physical 
  quantities are collected in all cells.
+ This example can be adapted for any kind of internal irradiation.
 
  1- USAGE
  
@@ -73,6 +74,9 @@
   - percentage of cells labeled with particles per region: /cellLabelingPercentagePerRegion
   - maximum step length between two interactions: /stepMax
   - define spheroid regions: /population/internalRatio and /externalRatio
+  - generate a file with position, direction and energy of primary particles: writeInfoPrimariesTxt
+  - use a txt file with position, direction and energy of primary particles to set them:
+    usePositionsDirectionsTxt
   - diffusion of radionuclide's daughter after fixation (only for At-211 for now): /daughterDiffusion
 
  6- OUTPUT
@@ -94,4 +98,7 @@
   - If particleName is `EndOfRun`, dose deposited in the spheroid;
   - If the particle source in this event has diffused before the particle
     emission, equal to 1.
+    
+  Two .txt files are generated: one with the masses of all nuclei and cells, one with
+  all the cell ids that were removed by CPOP compaction management.
  

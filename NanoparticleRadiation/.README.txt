@@ -9,6 +9,8 @@
 
   This page only details the nanoparticle part but the example uses both
   a homogeneous source and a nanoparticle (distributed) one.
+  
+  The distributed source spreads primary particle sources among cells.
 
   To model nanoparticle, a simulation must be done beforehand to collect the secondary
   electrons and the energy spectrum.
