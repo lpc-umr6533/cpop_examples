@@ -1,13 +1,17 @@
 # NanoparticleRadiation
 
-This example shows you how to simulate the effect of nanoparticle in the cell population using Geant4.
+This example shows you how to simulate the effect of nanoparticle
+in the cell population using Geant4.
 
-This page only details the nanoparticle part but the example uses both a homogeneous source and a nanoparticle one.
+This page only details the nanoparticle part but the example uses both
+a homogeneous source and a nanoparticle (distributed) one.
 
-To model nanoparticle, a simulation must be done beforehand to collect the secondary electrons and the energy spectrum. See this guide to do it TODO.
+To model nanoparticle, a simulation must be done beforehand to collect the secondary
+electrons and the energy spectrum.
 
 Once the energy spectrum is available, the user can choose :
 - the PhysicsList: emstandard; emstandard_opt1; emstandard_opt2; emstandard_opt3; emstandard_opt4; emlivermore; empenelope; emDNAphysics;
+emDNAphysics_opt2, emDNAphysics_opt4, emDNAphysics_opt6
 - the number of nanoparticle to distribute;
 - the distribution of the nanoparticle in the spheroid;
 - the position inside a cell;
