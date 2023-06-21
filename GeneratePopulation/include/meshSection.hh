@@ -67,9 +67,9 @@
  *
  */
 
- ///MeshSection
- ///
- ///It contains the mesh properties for the cell population.
+/// MeshSection
+///
+/// It contains the mesh properties for the cell population.
 
 namespace B6 {
 

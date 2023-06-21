@@ -71,9 +71,9 @@
  *
  */
 
- ///CellSection classzz_1_1cfg_1_1_value
- ///
- ///It contains the geometrical properties of a cell.
+/// CellSection classzz_1_1cfg_1_1_value
+///
+/// It contains the geometrical properties of a cell.
 
 namespace B6 {
 

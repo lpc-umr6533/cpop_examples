@@ -50,10 +50,10 @@
 #include <map>
 #include <set>
 
-///SimulationEnvironment class
+/// SimulationEnvironment class
 ///
-///It gets all the parameters given as an input, calls the needed functions
-///to generate the cell population, and saves it.
+/// It gets all the parameters given as an input, calls the needed functions
+/// to generate the cell population, and saves it.
 
 namespace B6 {
 

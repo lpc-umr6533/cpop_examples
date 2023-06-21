@@ -67,9 +67,9 @@
  *
  */
 
- ///ForceSection class
- ///
- ///It contains the force properties applied for the cell population.
+/// ForceSection class
+///
+/// It contains the force properties applied for the cell population.
 
 namespace B6 {
 

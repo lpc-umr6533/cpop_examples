@@ -67,9 +67,9 @@
  *
  */
 
- ///SimulationSection class
- ///
- ///It contains the simulation properties for the cell population
+/// SimulationSection class
+///
+/// It contains the simulation properties for the cell population
 
 namespace B6 {
 
