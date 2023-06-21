@@ -1,3 +1,29 @@
+//
+// ********************************************************************
+// * License and Disclaimer                                           *
+// *                                                                  *
+// * The  Geant4 software  is  copyright of the Copyright Holders  of *
+// * the Geant4 Collaboration.  It is provided  under  the terms  and *
+// * conditions of the Geant4 Software License,  included in the file *
+// * LICENSE and available at  http://cern.ch/geant4/license .  These *
+// * include a list of copyright holders.                             *
+// *                                                                  *
+// * Neither the authors of this software system, nor their employing *
+// * institutes,nor the agencies providing financial support for this *
+// * work  make  any representation or  warranty, express or implied, *
+// * regarding  this  software system or assume any liability for its *
+// * use.  Please see the license in the file  LICENSE  and URL above *
+// * for the full disclaimer and the limitation of liability.         *
+// *                                                                  *
+// * This  code  implementation is the result of  the  scientific and *
+// * technical work of the GEANT4 collaboration.                      *
+// * By using,  copying,  modifying or  distributing the software (or *
+// * any work based  on the software)  you  agree  to acknowledge its *
+// * use  in  resulting  scientific  publications,  and indicate your *
+// * acceptance of all terms of the Geant4 Software license.          *
+// ********************************************************************
+//
+
 #define G4MULTITHREADED // TODO hack
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
@@ -33,15 +59,14 @@
 
 int main(int argc, char** argv)
 {
-		auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
-
-    CLHEP::MTwistEngine defaultEngine(time(NULL));
+    CLHEP::MTwistEngine defaultEngine(time(nullptr));
     G4Random::setTheEngine(&defaultEngine);
     //G4int seed = time(NULL);
     //G4Random::setTheSeed(seed);
 
-    CLHEP::MTwistEngine defaultEngineCPOP(time(NULL));
+    CLHEP::MTwistEngine defaultEngineCPOP(time(nullptr));
     //CLHEP::MTwistEngine defaultEngineCPOP(1234567);
     RandomEngineManager::getInstance()->setEngine(&defaultEngineCPOP);
 
@@ -52,7 +77,7 @@ int main(int argc, char** argv)
 
 #ifdef G4MULTITHREADED
     // Get the spectrum file. Specify option -t nbThread or --thread nbThread
-    int nThreads;
+    int nThreads = 1;
     parser.add_opt_value('t', "thread", nThreads, 0, "number of threads", "int");
 #endif
 
@@ -72,41 +97,40 @@ int main(int argc, char** argv)
         exit(-1);
     }
 
-
     // Construct the default run manager
     //
 #ifdef G4MULTITHREADED
-    G4MTRunManager * runManager = new G4MTRunManager;
+    auto* runManager = new G4MTRunManager;
     if ( nThreads > 0 ) {
         runManager->SetNumberOfThreads(nThreads);
     }
 #else
-    G4RunManager * runManager = new G4RunManager;
+    auto* runManager = new G4RunManager;
 #endif
 
-		// Create a population
-		cpop::Population population;
-		population.messenger().BuildCommands("/cpop");
+    // Create a population
+    cpop::Population population;
+    population.messenger().BuildCommands("/cpop");
 
     // Set mandatory initialization classes
     //
 
     // Set the geometry ie a box filled with G4_WATER
-    DetectorConstruction* detector = new DetectorConstruction();
+    auto* detector = new B8::DetectorConstruction;
     runManager->SetUserInitialization(detector);
 
     // Set the physics list
-    cpop::PhysicsList* physicsList = new cpop::PhysicsList();
+    auto* physicsList = new cpop::PhysicsList;
     physicsList->messenger().BuildCommands("/cpop/physics");
     runManager->SetUserInitialization(physicsList);
 
-		G4cout << "Physics List" << G4endl;
+    G4cout << "Physics List" << G4endl;
 
     // Set custom action to extract informations from the simulation
-    cpop::ActionInitialization* actionInitialisation = new cpop::ActionInitialization(population);
+    auto* actionInitialisation = new cpop::ActionInitialization(population);
     runManager->SetUserInitialization(actionInitialisation);
 
-		G4cout << "Action Initialization" << G4endl;
+    G4cout << "Action Initialization" << G4endl;
 
     // Get the pointer to the User Interface manager
     G4UImanager* UImanager = G4UImanager::GetUIpointer();
@@ -116,8 +140,7 @@ int main(int argc, char** argv)
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - start;
 
-     std::cout << "elapsed time: " << elapsed_seconds.count() << " s\n";
-
+    std::cout << "elapsed time: " << elapsed_seconds.count() << " s\n";
 
     // Job termination
     // Free the store: user actions, physics_list and detector_description are
@@ -125,9 +148,7 @@ int main(int argc, char** argv)
     // in the main() program !
     delete runManager;
 
-
     return 0;
-
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo.....
