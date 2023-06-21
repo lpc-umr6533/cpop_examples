@@ -73,7 +73,7 @@
 
 namespace B6 {
 
-template <typename T>
+template<typename T>
 class SimulationSection: public conf::SectionReader<T> {
 public:
 	void fill() override {

@@ -30,8 +30,8 @@
 #define B9_DETECTOR_CONSTRUCTION_HH
 
 #include <G4VUserDetectorConstruction.hh>
-#include <G4VPhysicalVolume.hh>
-#include <Population.hh>
+
+class G4VPhysicalVolume;
 
 namespace cpop {
 

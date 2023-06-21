@@ -73,7 +73,7 @@
 
 namespace B6 {
 
-template <typename T>
+template<typename T>
 class SpheroidSection: public conf::SectionReader<T> {
 public:
 	void fill() override {
@@ -82,7 +82,6 @@ public:
 		double internalRadius = this->template load<double>(sectionName, "internalRadius");
 		double externalRadius = this->template load<double>(sectionName, "externalRadius");
 		int nbCell = this->template load<int>(sectionName, "nbCell");
-
 
 		this->objToFill->SetSpheroidProperties(internalRadius, externalRadius, nbCell);
 	}

@@ -30,8 +30,9 @@
 #ifndef B8_DETECTOR_CONSTRUCTION_HH
 #define B8_DETECTOR_CONSTRUCTION_HH
 
-#include "G4VUserDetectorConstruction.hh"
-#include "G4VPhysicalVolume.hh"
+#include <G4VUserDetectorConstruction.hh>
+
+class G4VPhysicalVolume;
 
 namespace B8 {
 

@@ -77,7 +77,7 @@
 
 namespace B6 {
 
-template <typename T>
+template<typename T>
 class CellSection: public conf::SectionReader<T> {
 public:
 	void fill() override {

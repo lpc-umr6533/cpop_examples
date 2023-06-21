@@ -30,8 +30,8 @@
 #ifndef B7_DETECTOR_CONSTRUCTION_MESSENGER_HH
 #define B7_DETECTOR_CONSTRUCTION_MESSENGER_HH
 
-#include "G4UImessenger.hh"
-#include "G4UIcmdWithADoubleAndUnit.hh"
+#include <G4UImessenger.hh>
+#include <G4UIcmdWithADoubleAndUnit.hh>
 
 namespace B7 {
 

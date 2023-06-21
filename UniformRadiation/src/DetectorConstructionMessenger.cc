@@ -25,7 +25,6 @@
 //
 
 #include "DetectorConstructionMessenger.hh"
-
 #include "DetectorConstruction.hh"
 
 namespace B7 {

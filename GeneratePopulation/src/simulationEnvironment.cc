@@ -27,7 +27,12 @@
 #include "simulationEnvironment.hh"
 
 #include <CellProperties.hh>
+#include <CLHEP/Random/MTwistEngine.h>
+#include <DistributionFactory.hh>
 #include <G4MaterialPropertiesIndex.hh>
+#include <MeshFactory.hh>
+#include <RandomEngineManager.hh>
+#include <SpheresSDelimitation.hh>
 #include <UnitSystemManager.hh>
 
 namespace B6 {

@@ -34,21 +34,9 @@
 #include <string>
 
 #include <CellFactory.hh>     // needed to call the mesh factory, creating the mesh
-#include <Cell_Utils.hh>      // used for the getNearestAndFarthestPoints function
-#include <DistributionFactory.hh> // used to distribute cell inside the sub environment
-#include <ElasticForce.hh>      // The type of force we want to apply
+#include <ElasticForce.hh>    // The type of force we want to apply
 #include <MASPlatform.hh>     // THe platform used to manage agent ( cell ) execution
-#include <File_CPOP_Data.hh>    // CPOP tools for saving files
-#include <MeshFactory.hh>     // used to get the reuested mesh
-#include <RandomEngineManager.hh> // manager used to generate Random numbers
-#include <SimpleSpheroidalCell.hh>  // the basic cell we want to use
-#include <SpheresSDelimitation.hh>  // the spatial delimitation we are using
-#include <UnitSystemManager.hh>   // used to have the requested unitn
-
-#include <CLHEP/Random/MTwistEngine.h>
-
-#include <map>
-#include <set>
+#include <File_CPOP_Data.hh>  // CPOP tools for saving files
 
 /// SimulationEnvironment class
 ///

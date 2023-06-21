@@ -61,17 +61,13 @@ int main(int argc, char** argv)
 {
 	auto start = std::chrono::high_resolution_clock::now();
 
-	CLHEP::MTwistEngine defaultEngine(time(nullptr));
+	CLHEP::MTwistEngine defaultEngine(123456);
 	G4Random::setTheEngine(&defaultEngine);
-	//G4int seed = time(NULL);
-	//G4Random::setTheSeed(seed);
 
-	CLHEP::MTwistEngine defaultEngineCPOP(time(nullptr));
-	//CLHEP::MTwistEngine defaultEngineCPOP(1234567);
+	CLHEP::MTwistEngine defaultEngineCPOP(456123);
 	RandomEngineManager::getInstance()->setEngine(&defaultEngineCPOP);
 
 	// Command line arguments
-
 	// First we add an argument parser to add parameters
 	zz::cfg::ArgParser parser;
 
@@ -88,13 +84,11 @@ int main(int argc, char** argv)
 	parser.parse(argc, argv);
 
 	// check errors
-	if (parser.count_error() > 0)
+	if(parser.count_error() > 0)
 	{
 		std::cout << parser.get_error() << std::endl;
-		// print help
 		std::cout << parser.get_help() << std::endl;
-		// continue or exit()??
-		exit(-1);
+		return 1;
 	}
 
 
@@ -102,7 +96,7 @@ int main(int argc, char** argv)
 	//
 #ifdef G4MULTITHREADED
 	auto* runManager = new G4MTRunManager;
-	if ( nThreads > 0 ) {
+	if(nThreads > 0) {
 		runManager->SetNumberOfThreads(nThreads);
 	}
 #else

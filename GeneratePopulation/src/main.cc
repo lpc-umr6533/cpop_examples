@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	zz::cfg::ArgParser argparser;
 
 	// Generate visualization file. Specify option --vis in the command line. This is an optional flag
-	bool vis;
+	bool vis = false;
 	argparser.add_opt_flag(-1,"vis","generate off file to visualize population", &vis);
 
 	// Get the configuration file from the command line. Specify option -f <fileName>
