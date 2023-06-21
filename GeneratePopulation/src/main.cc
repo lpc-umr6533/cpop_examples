@@ -63,14 +63,13 @@ int main(int argc, char** argv) {
 	 * delete reader;
 	 * delete myObject;
 	 */
-	auto* reader = new conf::ConfigReader<SimulationEnvironment>();
-	reader->addSection<UnitSection>();
-	reader->addSection<CellSection>();
-	reader->addSection<SpheroidSection>();
-	reader->addSection<MeshSection>();
-	reader->addSection<ForceSection>();
-	reader->addSection<SimulationSection>();
-
+	auto* reader = new conf::ConfigReader<B6::SimulationEnvironment>();
+	reader->addSection<B6::UnitSection>();
+	reader->addSection<B6::CellSection>();
+	reader->addSection<B6::SpheroidSection>();
+	reader->addSection<B6::MeshSection>();
+	reader->addSection<B6::ForceSection>();
+	reader->addSection<B6::SimulationSection>();
 
 	// Parse the configuration file and start the simulation
 	// SimulationEnvironment contains everything required to create a cell population
