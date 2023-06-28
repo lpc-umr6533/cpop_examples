@@ -35,10 +35,8 @@ int main(int argc, char** argv) {
 	if (argparser.count_error() > 0)
 	{
 		std::cout << argparser.get_error() << std::endl;
-		// print help
 		std::cout << argparser.get_help() << std::endl;
-		// continue or exit()??
-		exit(-1);
+		return 1;
 	}
 
 	// Extract the basename of the input file in order to create output files
@@ -50,31 +48,30 @@ int main(int argc, char** argv) {
 
 	// How to create your own configuration reader to build a T object
 	/* 1) Declare a ConfigReader object
-	 * conf::ConfigReader<T>* reader = new conf::ConfigReader<T>();
+	 * conf::ConfigReader<T> reader;
 	 *
 	 * 2) Add sections to the reader (documentation in xxxSection.hh)
-	 * reader->addSection<Section1>();
-	 * reader->addSection<Section2>();
+	 * reader.addSection<Section1>();
+	 * reader.addSection<Section2>();
 	 *
 	 * 3) Parse your file and retrieve your object
-	 * T* myObject = reader->parse(configFile);
+	 * auto* myObject = reader->parse(configFile);
 	 *
 	 * 4) Do not forget to free memory when you do not need it anymore
-	 * delete reader;
 	 * delete myObject;
 	 */
-	auto* reader = new conf::ConfigReader<B6::SimulationEnvironment>();
-	reader->addSection<B6::UnitSection>();
-	reader->addSection<B6::CellSection>();
-	reader->addSection<B6::SpheroidSection>();
-	reader->addSection<B6::MeshSection>();
-	reader->addSection<B6::ForceSection>();
-	reader->addSection<B6::SimulationSection>();
+	conf::ConfigReader<B6::SimulationEnvironment> reader;
+	reader.addSection<B6::UnitSection>();
+	reader.addSection<B6::CellSection>();
+	reader.addSection<B6::SpheroidSection>();
+	reader.addSection<B6::MeshSection>();
+	reader.addSection<B6::ForceSection>();
+	reader.addSection<B6::SimulationSection>();
 
 	// Parse the configuration file and start the simulation
 	// SimulationEnvironment contains everything required to create a cell population
 	// (documentation in simulationEnvironment.hh and simulationEnvironment.cc)
-	auto* simulationEnv = reader->parse(input.c_str());
+	auto* simulationEnv = reader.parse(input.c_str());
 
 	// Start the simulation to apply elastic force
 	simulationEnv->StartSimulation();
@@ -91,8 +88,5 @@ int main(int argc, char** argv) {
 		std::cout << "Generated : "<< outputOff << std::endl;
 	}
 
-	delete reader;
 	delete simulationEnv;
-
-	return 0;
 }

@@ -94,12 +94,11 @@ int main(int argc, char** argv)
 
 	// Construct the default run manager
 #ifdef G4MULTITHREADED
-	auto* runManager = new G4MTRunManager;
-	if(nThreads > 0) {
-		runManager->SetNumberOfThreads(nThreads);
-	}
+	G4MTRunManager runManager;
+	if(nThreads > 0)
+		runManager.SetNumberOfThreads(nThreads);
 #else
-	auto* runManager = new G4RunManager;
+	G4RunManager runManager;
 #endif
 
 	// Create a population
@@ -110,16 +109,16 @@ int main(int argc, char** argv)
 
 	// Set the geometry ie a box filled with G4_WATER
 	auto* detector = new B7::DetectorConstruction;
-	runManager->SetUserInitialization(detector);
+	runManager.SetUserInitialization(detector);
 
 	// Set the physics list
 	auto* physicsList = new cpop::PhysicsList();
 	physicsList->messenger().BuildCommands("/cpop/physics");
-	runManager->SetUserInitialization(physicsList);
+	runManager.SetUserInitialization(physicsList);
 
 	// Set custom action to extract informations from the simulation
 	auto* actionInitialisation = new cpop::ActionInitialization(population);
-	runManager->SetUserInitialization(actionInitialisation);
+	runManager.SetUserInitialization(actionInitialisation);
 
 	// Get the pointer to the User Interface manager
 	G4UImanager* UImanager = G4UImanager::GetUIpointer();
@@ -130,14 +129,6 @@ int main(int argc, char** argv)
 	std::chrono::duration<double> elapsed_seconds = end - start;
 
 	std::cout << "elapsed time: " << elapsed_seconds.count() << " s\n";
-
-	// Job termination
-	// Free the store: user actions, physics_list and detector_description are
-	// owned and deleted by the run manager, so they should not be deleted
-	// in the main() program !
-	delete runManager;
-
-	return 0;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo.....
