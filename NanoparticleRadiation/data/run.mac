@@ -102,13 +102,13 @@
 # set the sources distribution in a cell containing a source
 # organelle order : CellMembrane Nucleus NucleusMembrane Cytoplasm
 # Put a float proportion between 0 and 1 
-/cpop/source/radionuclide/distributionInCell 1 0 0 0
+/cpop/source/gadolinium/distributionInCell 1 0 0 0
 
 # set the maximum number of sources per cell, in each region.
 # region order : necrosis intermediary external
-/cpop/source/radionuclide/maxSourcesPerCell 10000 10000 10000
+/cpop/source/gadolinium/maxSourcesPerCell 10000 10000 10000
 
-# Activate diffusion of radionuclide's daughter (only for At-211)
+# Activate diffusion of gadolinium's daughter (only for At-211)
 /cpop/source/daughterDiffusion no
 
 
