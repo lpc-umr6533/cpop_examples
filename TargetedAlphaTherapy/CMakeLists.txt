@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.7)
 project(TargetedAlphaTherapy)
 set(BINARY_NAME targetedAlphaTherapy)
 
-set(ALL_SOURCE 
+set(ALL_SOURCE
 	src/main.cc
 	src/DetectorConstruction.cc
 	src/DetectorConstructionMessenger.cc
@@ -29,3 +29,4 @@ target_compile_options(${BINARY_NAME} PUBLIC -Wall -pthread)
 target_link_libraries(${BINARY_NAME} PUBLIC Platform_SMA Modeler)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR}/example/TargetedAlphaTherapy)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/example/TargetedAlphaTherapy/output)
