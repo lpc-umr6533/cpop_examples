@@ -26,8 +26,8 @@
 
 # set the physics list you want to use.
 # candidates : emstandard emstandard_opt1 emstandard_opt2 emstandard_opt3
-emstandard_opt4 emlivermore empenelope emDNAphysics emDNAphysics_opt2
-emDNAphysics_opt4 emDNAphysics_opt6
+# emstandard_opt4 emlivermore empenelope emDNAphysics emDNAphysics_opt2
+# emDNAphysics_opt4 emDNAphysics_opt6
 /cpop/physics/physicsList emstandard_opt4
 #/cpop/physics/physicsList emDNAphysics_opt2
 
@@ -73,7 +73,7 @@ emDNAphysics_opt4 emDNAphysics_opt6
 ##### For now, only one option can be chosen ####
 
 #Write positions, directions and energies of primary particles in a .txt
-/cpop/population/writeInfoPrimariesTxt yes
+/cpop/population/writeInfoPrimariesTxt yes infoPrimaries0.txt
 
 # Initialize cpop
 /cpop/population/init
